@@ -5,7 +5,7 @@ This repository contains Python scripts that serve as tools for solving and unde
 
 ## Scripts
 
-### Chapter 2
+### Chapter 1
 #### `queue-delay.py`
 This script calculates the **traffic intensity** and **queueing delay** based on the transmission rate, constant packet length, and average packet arrival rate.
 
