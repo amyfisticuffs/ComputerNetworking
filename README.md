@@ -67,8 +67,50 @@ This script computes **TCP sequence numbers** given the initial sequence number,
   TCP Segment 4 Sequence Number: 841
   TCP Segment 5 Sequence Number: 1037
   ```
+---
 
-## Requirements
+### Chapter 4
+#### `subnet_addressing.py`
+
+# Subnet Addressing Script
+
+This script calculates subnet allocations based on user-provided network and host requirements using **Variable Length Subnet Masking (VLSM)**. It ensures efficient IP space utilization by assigning subnets in order of largest to smallest.
+
+- **Usage:**
+
+```sh
+python subnet_addressing.py <Network Address(CIDR)> <subnet1_hosts> <subnet2_hosts> ...
+
+
+python subnet_addressing.py 192.168.1.0/24 50 30 10
+
+  ```
+- **Example:**
+```sh
+python subnet_addressing.py 192.168.1.0/24 50 30 10
+
+Network Address: 192.168.1.0/24
+Private
+
+SUBNET: 1, HOSTS: 50
+Needs 52 addresses, 50 hosts + Network Address + Broadcast Address
+52 addresses require 6 bits(64)
+192.168.1.0 to 192.168.1.63
+11000000.10101000.00000001.00000000 to
+11000000.10101000.00000001.00111111
+Subnet 1 Starting address: 192.168.1.1
+Subnet 1 Broadcast address: 192.168.1.63
+Subnet 1 Ending address: 192.168.1.62
+Subnet 1 subnet address 192.168.1.0/26
+
+...
+  ```
+
+
+
+---
+
+### Requirements
 - Python 3.x
 
 ## Notes
