@@ -27,6 +27,9 @@ for i in range(2, n):
 # Define the original network
 cidr_input = sys.argv[1]
 network = ipaddress.IPv4Network(cidr_input, strict=False)
+print("When subnetting, you should always allocate the subnet with the largest number ")
+print("of hosts first. This strategy is called Variable Length Subnet Masking (VLSM), ")
+print("and it helps to minimize wasted IP space while ensuring that all subnets fit properly.\n")
 
 print(f"🌐 Network {network}")
 print(f"{network.network_address} → {network.broadcast_address}")
@@ -67,6 +70,8 @@ for subnet_ident, subnet_hosts in sorted_subnet_list:
 
     print(f"🌐 Subnet {subnet_ident}, {subnet_hosts} hosts:", allocated)  
     print(f"{allocated.network_address} → {allocated.broadcast_address}")
+    print('.'.join([bin(int(x)+256)[3:] for x in str(allocated.network_address).split('.')])+ " to")
+    print('.'.join([bin(int(x)+256)[3:] for x in str(allocated.broadcast_address).split('.')]))
     print(f"Broadcast Address: {allocated.broadcast_address}")
     print(f"First Address:     {allocated.network_address + 1}")
     print(f"Last Address:      {allocated.broadcast_address - 1}\n")
